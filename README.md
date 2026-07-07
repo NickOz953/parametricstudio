@@ -82,3 +82,4 @@ GUMROAD_PRODUCT_ID
 4. Customer enters Gumroad email and serial/license key.
 5. If valid, the browser stays activated for 30 days.
 6. After 30 days, the customer is asked to activate again.
+7. Redeploy after adding activation secret.
