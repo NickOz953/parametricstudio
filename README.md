@@ -1,39 +1,27 @@
-# Parametric Studio CNC V1.0
+# Parametric Studio CNC V1.0 Deployment Package
 
-This is the GitHub/Netlify deployment package for Parametric Studio CNC V1.0.
+This package is ready to upload to your existing GitHub repository connected to Netlify.
 
-## Live structure
+## What each file does
 
-- `/index.html` is the free public version.
-- `/app/index.html` is the paid full version with Gumroad activation.
-- `/netlify/functions/activate.js` verifies Gumroad license keys.
-- `/netlify/functions/check-activation.js` checks saved 30-day activation tokens.
+- `index.html` is the free version at `https://parametricstudio.net/`
+- `app/index.html` is the paid/full version at `https://parametricstudio.net/app/`
+- `netlify/functions/activate.js` verifies Gumroad licenses and issues 30-day activation tokens
+- `netlify/functions/check-activation.js` checks saved activation tokens
+- `netlify.toml` maps `/api/activate` and `/api/check-activation` to the Netlify Functions
 
-## Gumroad product ID
+## Important Netlify environment variables
 
-The Netlify Functions are hardcoded to use this product ID so an old Netlify environment variable cannot override it:
-
-```text
-sEsfR36xUUenuBEfx8vqCA==
-```
-
-## Required Netlify environment variable
-
-You still need this Netlify environment variable:
-
-```text
-ACTIVATION_SECRET
-```
-
-Use a long private value of at least 24 characters. Keep the same value between deployments so existing activations continue working.
+Keep your existing `ACTIVATION_SECRET` exactly the same so current users are not forced to reactivate early.
 
 Optional:
 
-```text
-ACTIVATION_DAYS=30
-```
+- `ACTIVATION_DAYS=30`
 
-## URLs
+The Gumroad product ID is hardcoded in the functions:
 
-- Free version: `https://parametricstudio.net/`
-- Paid version: `https://parametricstudio.net/app/`
+`sEsfR36xUUenuBEfx8vqCA==`
+
+## After upload
+
+Netlify should automatically redeploy after you commit these files to GitHub.
