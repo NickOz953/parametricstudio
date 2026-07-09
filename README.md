@@ -1,11 +1,11 @@
-# Parametric Studio Netlify/GitHub Package
+# Parametric Studio V1.6 Netlify/GitHub Package
 
-This package sets up:
+This package updates your existing Parametric Studio site to V1.6.
 
-- `https://parametricstudio.net/` as the free version homepage.
-- `https://parametricstudio.net/app/` as the paid full version.
-- Gumroad license activation for the paid version.
-- A signed browser activation token that keeps the paid version unlocked for 30 days.
+## What this deploys
+
+- `https://parametricstudio.net/` = Parametric Studio V1.6 Free
+- `https://parametricstudio.net/app/` = Parametric Studio V1.6 Full, protected by Gumroad serial activation
 
 ## File structure
 
@@ -24,62 +24,35 @@ GITHUB_UPLOAD_STEPS.md
 
 ## Gumroad product ID
 
-The paid version is configured to verify this Gumroad product ID:
+The paid version verifies against this Gumroad product ID:
 
 ```text
 sEsfR36xUUenuBEfx8vqCA==
 ```
 
+This Product ID is hardcoded in `netlify/functions/activate.js` to avoid old Netlify environment variables overriding it.
+
 ## Required Netlify environment variable
 
-In Netlify, open your project and add this environment variable:
+Keep your existing Netlify environment variable:
 
 ```text
 ACTIVATION_SECRET
 ```
 
-Use a long private value, at least 24 characters. Example:
+Use a long private value, at least 24 characters. Do not put this secret in GitHub.
 
-```text
-parametric-studio-private-activation-secret-2026-change-this
-```
-
-Do not put this secret in GitHub.
-
-## Optional Netlify environment variables
-
-You can also add:
+## Optional Netlify environment variable
 
 ```text
 ACTIVATION_DAYS
 ```
 
-Set it to:
-
-```text
-14
-```
-
-or:
-
-```text
-30
-```
-
-If you do not set it, the app defaults to 30 days.
-
-You can also add this if you ever want to override the product ID without changing code:
-
-```text
-GUMROAD_PRODUCT_ID
-```
+Set it to `14` or `30`. If omitted, the app defaults to 30 days.
 
 ## Customer flow
 
-1. Visitor goes to `https://parametricstudio.net/`.
-2. Visitor uses the free version.
-3. Paid customer opens `https://parametricstudio.net/app/`.
-4. Customer enters Gumroad email and serial/license key.
-5. If valid, the browser stays activated for 30 days.
-6. After 30 days, the customer is asked to activate again.
-7. Redeploy after adding activation secret.
+1. Visitor opens `https://parametricstudio.net/` and uses the free V1.6 app.
+2. Paid customer opens `https://parametricstudio.net/app/`.
+3. Customer enters their Gumroad email and serial/license key.
+4. If valid, the browser remains activated for the configured activation period.
