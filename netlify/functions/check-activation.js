@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 
-const GUMROAD_PRODUCT_ID = process.env.GUMROAD_PRODUCT_ID || "sEsfR36xUUenuBEfx8vqCA==";
+const GUMROAD_PRODUCT_ID = "sEsfR36xUUenuBEfx8vqCA==";
 
 function jsonResponse(data, statusCode = 200) {
   return {

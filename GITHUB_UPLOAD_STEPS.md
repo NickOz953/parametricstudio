@@ -1,41 +1,18 @@
-# GitHub Upload Steps for Parametric Studio V1.6
+# Upload steps
 
-1. Download and extract this ZIP.
-2. Open the extracted folder.
-3. Upload the contents to the root of your existing GitHub repository.
+1. Unzip this package.
+2. Open your existing GitHub repository for Parametric Studio.
+3. Upload/replace these files and folders:
+   - `index.html`
+   - `app/index.html`
+   - `netlify/functions/activate.js`
+   - `netlify/functions/check-activation.js`
+   - `netlify.toml`
+   - `README.md`
 4. Commit the changes.
-5. Netlify should redeploy automatically.
+5. Wait for Netlify to finish deploying.
+6. Test:
+   - `https://parametricstudio.net/`
+   - `https://parametricstudio.net/app/`
 
-## Make sure GitHub shows these paths
-
-```text
-index.html
-app/index.html
-netlify/functions/activate.js
-netlify/functions/check-activation.js
-netlify.toml
-```
-
-## Important
-
-Do not change your Netlify `ACTIVATION_SECRET` unless you want all users to re-activate sooner.
-
-Do not create a new Gumroad product if you want existing customers' license keys to keep working. Keep using the same Gumroad product ID:
-
-```text
-sEsfR36xUUenuBEfx8vqCA==
-```
-
-## Test after deploy
-
-Free version:
-
-```text
-https://parametricstudio.net/
-```
-
-Full paid version:
-
-```text
-https://parametricstudio.net/app/
-```
+Do not change your Netlify `ACTIVATION_SECRET` unless you want existing users to reactivate.
