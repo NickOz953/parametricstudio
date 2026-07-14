@@ -1,12 +1,21 @@
-# GitHub upload steps
+# GitHub Upload Steps
 
-1. Unzip this package.
-2. Open your existing GitHub repository for Parametric Studio.
-3. Upload/replace the contents of the repository with the contents of this folder.
-4. Commit the changes.
-5. Netlify should redeploy automatically.
-6. Test:
-   - `https://parametricstudio.net/`
-   - `https://parametricstudio.net/app/`
+1. Unzip this package on your computer.
+2. Open your existing Parametric Studio GitHub repository.
+3. Upload the extracted contents to the root of the repository, replacing existing files when prompted.
+4. Confirm these paths exist in GitHub:
+   - `index.html`
+   - `app/index.html`
+   - `app/legacy/V1.1/index.html`
+   - `netlify/functions/activate.js`
+   - `netlify/functions/check-activation.js`
+   - `netlify.toml`
+5. Commit the changes.
+6. Netlify should redeploy automatically.
 
-Do not change your existing Netlify `ACTIVATION_SECRET` unless you want current saved activations to become invalid.
+After deployment:
+- Free: `https://parametricstudio.net/`
+- Paid V1.2: `https://parametricstudio.net/app/`
+- Legacy paid V1.1: `https://parametricstudio.net/app/legacy/V1.1/`
+
+Do not change your existing Netlify `ACTIVATION_SECRET`.

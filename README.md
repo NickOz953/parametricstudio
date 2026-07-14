@@ -1,34 +1,17 @@
-# Parametric Studio CNC V1.1
+# Parametric Studio CNC V1.2 Deployment Package
 
-This repository is ready for GitHub + Netlify deployment.
+This package is ready to upload to your existing GitHub repository connected to Netlify.
 
-## URLs
+## Live URLs after deployment
 
-- `/` — free version
-- `/app/` — paid/full version with Gumroad serial activation
+- Free version: `https://parametricstudio.net/`
+- Current paid/full version V1.2: `https://parametricstudio.net/app/`
+- Legacy paid/full version V1.1: `https://parametricstudio.net/app/legacy/V1.1/`
 
-## Netlify environment variables
+## Important
 
-Keep your existing `ACTIVATION_SECRET` unchanged. Changing it will force existing activated users to re-enter their Gumroad email and license key.
+Keep your existing Netlify `ACTIVATION_SECRET` unchanged. The activation functions continue to use the Gumroad Product ID:
 
-Optional:
+`sEsfR36xUUenuBEfx8vqCA==`
 
-```text
-ACTIVATION_DAYS=30
-```
-
-The Gumroad product ID is hardcoded in the Netlify functions:
-
-```text
-sEsfR36xUUenuBEfx8vqCA==
-```
-
-## Files
-
-```text
-index.html
-app/index.html
-netlify/functions/activate.js
-netlify/functions/check-activation.js
-netlify.toml
-```
+The same saved activation token is used for the current V1.2 app and the legacy V1.1 app.
