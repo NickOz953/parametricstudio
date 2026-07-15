@@ -2,16 +2,33 @@
 
 This package is ready to upload to your existing GitHub repository connected to Netlify.
 
-## Live URLs after deployment
+## Live URLs
 
 - Free version: `https://parametricstudio.net/`
-- Current paid/full version V1.2: `https://parametricstudio.net/app/`
-- Legacy paid/full version V1.1: `https://parametricstudio.net/app/legacy/V1.1/`
+- Current paid/full version: `https://parametricstudio.net/app/`
+- Legacy paid/full V1.1 version: `https://parametricstudio.net/app/legacy/V1.1/`
 
-## Important
+## Folder structure
 
-Keep your existing Netlify `ACTIVATION_SECRET` unchanged. The activation functions continue to use the Gumroad Product ID:
+```text
+index.html
+app/index.html
+app/legacy/V1.1/index.html
+netlify/functions/activate.js
+netlify/functions/check-activation.js
+netlify.toml
+```
 
-`sEsfR36xUUenuBEfx8vqCA==`
+## Netlify settings
 
-The same saved activation token is used for the current V1.2 app and the legacy V1.1 app.
+Keep your existing Netlify environment variable unchanged:
+
+- `ACTIVATION_SECRET`
+
+The Gumroad Product ID remains hardcoded in `netlify/functions/activate.js`:
+
+```text
+sEsfR36xUUenuBEfx8vqCA==
+```
+
+Do not change the `ACTIVATION_SECRET` unless you intentionally want all saved activations to expire.
