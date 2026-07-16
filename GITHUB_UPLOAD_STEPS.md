@@ -1,18 +1,16 @@
 # GitHub Upload Steps
 
-1. Download and extract this ZIP file.
-2. Open the extracted folder.
-3. Upload all contents into the root of your existing GitHub repository.
-4. Replace existing files when GitHub asks.
+1. Unzip this package.
+2. Open your existing GitHub repository.
+3. Upload the contents of this unzipped folder into the root of the repository.
+4. Let GitHub replace existing files with the same names.
 5. Commit the changes.
 6. Netlify should redeploy automatically.
 
-After deployment, test these URLs:
+After deployment, test:
 
-```text
-https://parametricstudio.net/
-https://parametricstudio.net/app/
-https://parametricstudio.net/app/legacy/V1.1/
-```
+- `https://parametricstudio.net/`
+- `https://parametricstudio.net/app/`
+- `https://parametricstudio.net/app/?resetActivation=1`
 
-Keep the existing Netlify `ACTIVATION_SECRET` unchanged.
+Do not change your existing Netlify `ACTIVATION_SECRET`.
