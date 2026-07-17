@@ -1,4 +1,4 @@
-# Parametric Studio CNC V1.2.2 Deployment Package
+# Parametric Studio CNC V1.2.3 Deployment Package
 
 This package is ready to upload to your existing GitHub repository connected to Netlify.
 
@@ -17,7 +17,9 @@ netlify/functions/check-activation.js
 netlify.toml
 ```
 
-## Netlify settings
+## Activation
+
+The paid/full app at `/app/index.html` includes the activation screen.
 
 Keep your existing Netlify environment variable unchanged:
 
@@ -31,9 +33,9 @@ sEsfR36xUUenuBEfx8vqCA==
 
 Do not change the `ACTIVATION_SECRET` unless you intentionally want all saved activations to expire.
 
-## Activation test
+## Testing
 
-After deployment, test the full app activation screen with:
+After deployment, test the activation screen with:
 
 ```text
 https://parametricstudio.net/app/?resetActivation=1
