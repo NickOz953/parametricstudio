@@ -1,60 +1,100 @@
 const crypto = require("crypto");
 
-const PRODUCT_ID = "sEsfR36xUUenuBEfx8vqCA==";
+const GUMROAD_PRODUCT_ID = process.env.GUMROAD_PRODUCT_ID || "sEsfR36xUUenuBEfx8vqCA==";
 
-function json(statusCode, body) {
+function jsonResponse(data, statusCode = 200) {
   return {
     statusCode,
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "no-store"
-    },
-    body: JSON.stringify(body)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   };
 }
 
-function verifyToken(token, secret) {
-  if (!token || typeof token !== "string" || !token.includes(".")) {
-    throw new Error("Missing activation token.");
-  }
-  const [encodedPayload, signature] = token.split(".");
-  const expected = crypto.createHmac("sha256", secret).update(encodedPayload).digest("base64").replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+function base64url(input) {
+  const buffer = Buffer.isBuffer(input) ? input : Buffer.from(String(input), "utf8");
+  return buffer.toString("base64").replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+}
 
-  const sigBuffer = Buffer.from(signature || "");
-  const expectedBuffer = Buffer.from(expected);
-  if (sigBuffer.length !== expectedBuffer.length || !crypto.timingSafeEqual(sigBuffer, expectedBuffer)) {
-    throw new Error("Invalid activation token.");
+function fromBase64url(value) {
+  let base64 = String(value || "").replace(/-/g, "+").replace(/_/g, "/");
+  while (base64.length % 4) base64 += "=";
+  return Buffer.from(base64, "base64").toString("utf8");
+}
+
+function sign(encodedPayload, secret) {
+  return base64url(crypto.createHmac("sha256", secret).update(encodedPayload).digest());
+}
+
+function safeEqual(a, b) {
+  const aBuffer = Buffer.from(String(a || ""));
+  const bBuffer = Buffer.from(String(b || ""));
+
+  if (aBuffer.length !== bBuffer.length) return false;
+
+  return crypto.timingSafeEqual(aBuffer, bBuffer);
+}
+
+function verifyActivationToken(token, secret) {
+  const parts = String(token || "").split(".");
+
+  if (parts.length !== 2) {
+    return { valid: false, message: "Invalid activation token." };
   }
 
-  const payload = JSON.parse(Buffer.from(encodedPayload.replace(/-/g, "+").replace(/_/g, "/"), "base64").toString("utf8"));
-  return payload;
+  const encodedPayload = parts[0];
+  const suppliedSignature = parts[1];
+  const expectedSignature = sign(encodedPayload, secret);
+
+  if (!safeEqual(suppliedSignature, expectedSignature)) {
+    return { valid: false, message: "Invalid activation signature." };
+  }
+
+  let payload;
+
+  try {
+    payload = JSON.parse(fromBase64url(encodedPayload));
+  } catch (error) {
+    return { valid: false, message: "Invalid activation data." };
+  }
+
+  if (payload.productId !== GUMROAD_PRODUCT_ID) {
+    return { valid: false, message: "This activation is for a different product." };
+  }
+
+  if (!payload.expiresAt || Date.now() > Number(payload.expiresAt)) {
+    return { valid: false, message: "Your saved activation has expired. Please activate again." };
+  }
+
+  return {
+    valid: true,
+    message: "Activation valid.",
+    email: payload.email,
+    expiresAt: payload.expiresAt
+  };
 }
 
 exports.handler = async function(event) {
-  if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed." });
+  if (event.httpMethod !== "POST") {
+    return jsonResponse({ valid: false, message: "Method not allowed." }, 405);
+  }
 
-  const secret = process.env.ACTIVATION_SECRET;
-  if (!secret || secret.length < 24) {
-    return json(500, { error: "Server setup error: ACTIVATION_SECRET is missing or too short." });
+  const activationSecret = process.env.ACTIVATION_SECRET;
+
+  if (!activationSecret || activationSecret.length < 24) {
+    return jsonResponse({
+      valid: false,
+      message: "Server setup error: ACTIVATION_SECRET is missing or too short in Netlify."
+    }, 500);
   }
 
   let body;
+
   try {
     body = JSON.parse(event.body || "{}");
   } catch (error) {
-    return json(400, { error: "Invalid request body." });
+    return jsonResponse({ valid: false, message: "Invalid request." }, 400);
   }
 
-  try {
-    const payload = verifyToken(body.token, secret);
-    if (payload.productId !== PRODUCT_ID) {
-      return json(401, { valid: false, error: "Activation is for a different product." });
-    }
-    if (!payload.expiresAt || Date.now() > payload.expiresAt) {
-      return json(401, { valid: false, error: "Activation expired." });
-    }
-    return json(200, { valid: true, expiresAt: payload.expiresAt, email: payload.email });
-  } catch (error) {
-    return json(401, { valid: false, error: error.message || "Invalid activation token." });
-  }
+  const result = verifyActivationToken(body.token, activationSecret);
+  return jsonResponse(result, result.valid ? 200 : 200);
 };
