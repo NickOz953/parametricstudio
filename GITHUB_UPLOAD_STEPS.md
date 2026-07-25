@@ -1,8 +1,10 @@
-1. Extract this ZIP.
-2. Upload the extracted contents to the root of the existing GitHub repository.
-3. Commit the changes.
-4. Wait for Netlify to report a successful deploy.
-5. Test the free app at https://parametricstudio.net/
-6. Test activation at https://parametricstudio.net/app/?resetActivation=1
+# GitHub and Netlify upload steps
 
-Do not change the existing Netlify ACTIVATION_SECRET.
+1. Extract this ZIP.
+2. Upload and merge its contents into the existing GitHub repository root.
+3. Replace the existing root `index.html` and `app/index.html`.
+4. Commit the changes and wait for Netlify to deploy automatically.
+5. Test the free app at `https://parametricstudio.net/`
+6. Test paid activation at `https://parametricstudio.net/app/?resetActivation=1`
+
+Keep the existing Netlify `ACTIVATION_SECRET` unchanged.
