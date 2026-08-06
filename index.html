@@ -39,6 +39,46 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Parametric Studio CNC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parametric Studio CNC is browser-based CNC wall art design software for creating parametric wood slat panels, depth map reliefs, sheet layouts, and CNC-ready export files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Parametric Studio CNC export files for CNC software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The full version exports SVG, DXF, STL, and JSON design files for use with downstream CAD and CAM workflows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I create CNC relief panels from depth maps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Parametric Studio CNC can import true grayscale depth map images and convert them into slat-based CNC relief geometry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Parametric Studio CNC run on mobile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Parametric Studio CNC is intended for modern desktop browsers on Windows, macOS, Linux, or ChromeOS. A desktop or laptop is recommended."
+        }
+      }
+    ]
+  }
+  </script>
   <style>
     :root{
       --ink:#171310;
@@ -371,6 +411,27 @@
     }
     .req strong{display:block}
     .req span{display:block;color:var(--muted);margin-top:4px}
+    .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .faq-item{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:20px;
+      box-shadow:0 14px 34px rgba(41,31,20,.07);
+    }
+    .faq-item h3{
+      margin:0 0 8px;
+      font-size:19px;
+      line-height:1.25;
+    }
+    .faq-item p{
+      margin:0;
+      color:var(--muted);
+    }
     .final-cta{
       text-align:center;
       padding:78px clamp(18px,5vw,72px) 88px;
@@ -398,7 +459,7 @@
       font-size:14px;
     }
     @media(max-width:920px){
-      .feature-grid,.gallery-grid,.workflow,.band-grid,.requirements{grid-template-columns:1fr}
+      .feature-grid,.gallery-grid,.workflow,.band-grid,.requirements,.faq-grid{grid-template-columns:1fr}
       .nav{position:absolute}
       .navlinks a:not(.buy){display:none}
       .hero{min-height:86vh}
@@ -476,27 +537,27 @@
       </div>
       <div class="gallery-grid">
         <figure class="gallery-card">
-          <img src="assets/gallery-wave-panel.png" alt="Parametric slat wall panel with flowing wave relief">
+          <img src="assets/gallery-wave-panel.png" alt="Parametric slat wall panel with flowing wave relief" loading="lazy" decoding="async">
           <figcaption>Wave Panels<span>Smooth motion across the full wall panel.</span></figcaption>
         </figure>
         <figure class="gallery-card">
-          <img src="assets/gallery-gyroid-panel.png" alt="Parametric slat wall panel with gyroid-style woven relief">
+          <img src="assets/gallery-gyroid-panel.png" alt="Parametric slat wall panel with gyroid-style woven relief" loading="lazy" decoding="async">
           <figcaption>Mathematical Reliefs<span>Organic forms driven by procedural pattern controls.</span></figcaption>
         </figure>
         <figure class="gallery-card">
-          <img src="assets/gallery-flow-panel.png" alt="Parametric slat wall panel with flowing banded relief">
+          <img src="assets/gallery-flow-panel.png" alt="Parametric slat wall panel with flowing banded relief" loading="lazy" decoding="async">
           <figcaption>Flowing Pattern Fields<span>Layered movement with adjustable scale and strength.</span></figcaption>
         </figure>
         <figure class="gallery-card">
-          <img src="assets/gallery-face-relief.png" alt="Parametric slat wall panel with a face relief depth map">
+          <img src="assets/gallery-face-relief.png" alt="Parametric slat wall panel with a face relief depth map" loading="lazy" decoding="async">
           <figcaption>Depth Map Reliefs<span>Convert true grayscale depth maps into slat geometry.</span></figcaption>
         </figure>
         <figure class="gallery-card">
-          <img src="assets/gallery-depth-relief.png" alt="Parametric slat wall panel with dense organic relief">
+          <img src="assets/gallery-depth-relief.png" alt="Parametric slat wall panel with dense organic relief" loading="lazy" decoding="async">
           <figcaption>Sculptural Surfaces<span>Build large expressive surfaces with CNC-ready slats.</span></figcaption>
         </figure>
         <figure class="gallery-card">
-          <img src="assets/gallery-sculptural-panel.png" alt="Parametric slat wall panel with large geometric relief shapes">
+          <img src="assets/gallery-sculptural-panel.png" alt="Parametric slat wall panel with large geometric relief shapes" loading="lazy" decoding="async">
           <figcaption>Custom Wall Features<span>Create statement panels for walls, displays, and installations.</span></figcaption>
         </figure>
       </div>
@@ -505,7 +566,7 @@
     <section id="workflow" class="section">
       <div class="workflow">
         <div class="showcase-scene" aria-label="Parametric Studio CNC application shown on a laptop">
-          <img src="assets/workflow-laptop-showcase.png" alt="Parametric Studio CNC displayed on a laptop in a woodworking studio setting">
+          <img src="assets/workflow-laptop-showcase.png" alt="Parametric Studio CNC displayed on a laptop in a woodworking studio setting" loading="lazy" decoding="async">
         </div>
         <div>
           <div class="section-head">
@@ -552,7 +613,7 @@
           <div><strong>STL</strong><span>3D model preview and reference geometry</span></div>
           <div><strong>JSON</strong><span>Local save/open design files</span></div>
           <figure class="export-proof">
-            <img src="assets/gallery-sheet-layout.png" alt="Fabrication sheet layout with numbered CNC slat profiles">
+            <img src="assets/gallery-sheet-layout.png" alt="Fabrication sheet layout with numbered CNC slat profiles" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -568,6 +629,31 @@
         <div class="req"><strong>Browser</strong><span>Recent Chrome, Edge, Brave, Firefox, or Safari</span></div>
         <div class="req"><strong>Memory</strong><span>8 GB RAM minimum, 16 GB recommended</span></div>
         <div class="req"><strong>Use case</strong><span>Desktop or laptop recommended, not mobile</span></div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="section-head">
+        <h2>Common CNC wall art questions.</h2>
+        <p>Quick answers for makers comparing parametric wood slat wall design tools, depth map relief workflows, and CNC-ready export options.</p>
+      </div>
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>What is Parametric Studio CNC?</h3>
+          <p>It is browser-based CNC wall art software for creating parametric wood slat panels, depth map reliefs, fabrication layouts, and export files.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Can it export files for CNC software?</h3>
+          <p>Yes. The full version exports SVG, DXF, STL, and JSON design files for downstream CAD and CAM workflows.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Can I use depth maps?</h3>
+          <p>Yes. True grayscale depth maps can be imported and converted into slat-based CNC relief geometry.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Does it work on mobile?</h3>
+          <p>The app is designed for modern desktop browsers. A laptop or desktop computer is recommended for the best experience.</p>
+        </article>
       </div>
     </section>
 
