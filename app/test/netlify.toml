@@ -1,0 +1,24 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions."app-access"]
+  included_files = ["netlify/functions/app-access/*.html"]
+
+[[redirects]]
+  from = "/app"
+  to = "/app/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/app/"
+  to = "/.netlify/functions/app-access"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/app/index.html"
+  to = "/.netlify/functions/app-access"
+  status = 200
+  force = true
