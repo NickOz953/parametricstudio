@@ -1,0 +1,6 @@
+OpenCV.js 4.13.0
+Downloaded from https://docs.opencv.org/4.x/opencv.js on 2026-10-12.
+SHA256: 63366510248ADF3A7EDDF3E793DD825404EFB7DF3749F4D6F8557C7FA4CA8AA0
+License: Apache-2.0 (OPENCV-LICENSE.txt)
+Source: https://github.com/opencv/opencv/tree/4.13.0
+Bundled unmodified. Loaded only by the local photo-processing worker.

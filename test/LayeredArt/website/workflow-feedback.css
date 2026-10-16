@@ -1,0 +1,29 @@
+.canvas-toolbar{gap:10px;flex-wrap:wrap;height:auto;min-height:59px;padding-top:8px;padding-bottom:8px;flex-shrink:0}
+.generate-actions{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;width:max-content;max-width:calc(100% - 36px);z-index:4}
+.generate-actions .wide{width:auto;min-height:48px;margin:0!important;padding:12px 22px;font-size:15px;font-weight:650;background:#1967bb;color:#fff;border:1px solid #15589f;box-shadow:0 3px 12px #123c6533}
+.generate-actions .wide:hover:not(:disabled){background:#12559f}
+.generate-actions .wide:focus-visible{outline:3px solid #79baff;outline-offset:3px}
+.generate-actions .wide:disabled{background:#e2e9f1;color:#617387;border-color:#c9d4df;box-shadow:none}
+.generate-actions [hidden]{display:none!important}
+.right>.layer-section{border-top:0}
+.right #layerList{max-height:360px;overflow-y:auto;overscroll-behavior:contain}
+.right .layer strong{max-width:none}
+@media(min-width:561px) and (max-width:850px){.right>.layer-section{grid-column:1/-1}}
+#stage.ornamental-preview #layerColorsSection,#stage.topo-preview #layerColorsSection{display:block!important}
+#stage #layerColorsSection[hidden]{display:none!important}
+#calculationIndicator{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;max-width:calc(100% - 32px);background:var(--accent,#183e85);border:1px solid #315aa2;border-radius:8px;padding:24px;box-shadow:0 6px 28px #183e8533;z-index:5;pointer-events:none}
+#calculationIndicator[hidden]{display:none}
+/* Keep preview dimensions intact for rendering, but never reveal stale artwork behind progress. */
+#stage:has(> #calculationIndicator:not([hidden])) > :not(#calculationIndicator){visibility:hidden!important;pointer-events:none!important}
+#calculationIndicator [role=status]{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px;text-align:center}
+#calculationIndicator strong{font-size:26px;color:#fff;font-weight:650}
+#calculationPhase{font-size:13px;color:#e0eaff;overflow-wrap:anywhere}
+#calculationProgress{display:block;width:100%;height:10px;border:0;border-radius:5px;overflow:hidden;appearance:none;accent-color:#bfd5ff;background:#355b9c}
+#calculationProgress::-webkit-progress-bar{background:#355b9c;border-radius:3px}
+#calculationProgress::-webkit-progress-value{background:#bfd5ff;border-radius:3px}
+#calculationProgress::-moz-progress-bar{background:#bfd5ff;border-radius:3px}
+#calculationProgress:indeterminate{background:linear-gradient(90deg,#355b9c 0%,#355b9c 30%,#bfd5ff 45%,#bfd5ff 55%,#355b9c 70%);background-size:250% 100%;animation:calculating 1.3s linear infinite}
+#calculationProgress:indeterminate::-webkit-progress-bar{background:transparent}
+@keyframes calculating{from{background-position:100% 0}to{background-position:0 0}}
+@media(prefers-reduced-motion:reduce){#calculationProgress:indeterminate{animation:none}}
+@media(max-width:560px){.canvas-toolbar .segmented{order:0}.canvas-toolbar #fit{order:1;margin-left:auto}.generate-actions{top:12px;max-width:calc(100% - 24px)}.generate-actions .wide{min-height:46px;padding:10px 16px;font-size:14px}.workflow-tabs [role=tablist]{gap:10px}.workflow-tabs [role=tab]{min-width:0;padding:0 5px;font-size:12px}#calculationIndicator{padding:20px}}

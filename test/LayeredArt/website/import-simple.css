@@ -1,0 +1,16 @@
+#imageMainControls{padding:16px 0;border-top:1px solid #dbe3de;border-bottom:1px solid #dbe3de;margin:12px 0 16px}
+.import-panel .source-preview{max-height:88px;overflow:hidden}
+.import-panel .source-preview img{height:88px;object-fit:contain}
+#imageLayerCount{font-size:17px;font-weight:600;color:#203d33;margin:0 0 16px}
+#imageLayerCount .range{margin-top:10px;gap:14px}
+#imageLayerCount output{font-size:22px;font-weight:600;min-width:30px;text-align:center;color:#1765ad}
+#imageMainControls #openPhotoEditor{min-height:48px;background:#1765ad;color:white;border-color:#1765ad;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
+#imageMainControls #openPhotoEditor:hover{background:#124e86}
+#imageMainControls #clearPhoto{flex:0 0 40px}
+#automaticImageStatus{margin-bottom:0}
+#advancedImageControls{margin-bottom:20px}
+#advancedImageControls>summary{font-size:13px;color:#687a73;padding:8px 0;cursor:pointer}
+#advancedImageControls>label,#advancedImageControls>.fields{margin-top:12px}
+.import-panel>#aiImport{border-left-width:4px;margin-top:0;padding:16px 12px}
+.import-panel>#aiImport summary{font-size:18px}
+.import-panel>#aiImport textarea{min-height:80px;height:100px}

@@ -1,0 +1,11 @@
+#aiImport{padding:14px 12px;margin-bottom:16px;border-left:3px solid #1765ad;border-bottom:1px solid #ccddeb;background:#f0f6fc}
+#aiImport summary{font-size:16px;font-weight:600;color:#174f80;cursor:pointer;line-height:1.4}
+#aiImport .ai-prompt-heading{display:inline;overflow-wrap:anywhere}
+#aiImport .ai-prompt-heading svg{width:17px;height:17px;vertical-align:-3px;margin-right:5px}
+#aiImport .ai-prompt-badge{display:block;width:fit-content;margin-top:8px;padding:2px 7px;border-radius:4px;background:#dcebf9;color:#174f80;font-size:11px;font-weight:600}
+#aiImport #copyImagePrompt{background:#1765ad;border-color:#1765ad;color:#fff;font-weight:600;min-height:42px}
+#aiImport #copyImagePrompt:hover{background:#124e86}
+#aiImport p{font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+#aiImport textarea{width:100%;box-sizing:border-box;resize:vertical;min-height:140px;max-height:360px;margin:10px 0;font-family:inherit;font-size:12px;line-height:1.5}
+#aiImport button{display:flex;align-items:center;justify-content:center;gap:8px}
+#aiImport input{width:100%;box-sizing:border-box}

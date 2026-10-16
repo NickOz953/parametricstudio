@@ -1,0 +1,91 @@
+:root {
+  --accent: #183e85;
+  --accent-hover: #102d65;
+  --accent-focus: #3569bd;
+  --accent-soft: #edf2fc;
+  --accent-border: #b9cae7;
+  --ui-text: #28303d;
+  --ui-muted: #667080;
+  --ui-border: #dce0e7;
+  color: var(--ui-text);
+  background: #fafbfc;
+}
+
+/* Theme interface controls only; artwork swatches keep their colors. */
+button { color: var(--accent); border-color: var(--ui-border); }
+button:hover { background: var(--accent-soft); }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline-color: var(--accent-focus);
+}
+input[type=range], input[type=checkbox], input[type=radio], progress:not(#calculationProgress), .import-panel progress {
+  accent-color: var(--accent);
+}
+.brand, .brand > svg, .panel-heading > svg, .section-title > svg,
+.decoration-toggles svg, .empty-canvas > svg, .range output,
+#imageLayerCount output, .image-recommended, #photoActive {
+  color: var(--accent);
+}
+.primary, .generate-actions .wide, #imageMainControls #openPhotoEditor, #aiImport #copyImagePrompt {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.primary:hover, .generate-actions .wide:hover:not(:disabled),
+#imageMainControls #openPhotoEditor:hover, #aiImport #copyImagePrompt:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.generate-actions .wide { box-shadow: 0 3px 12px #183e8526; }
+.generate-actions .wide:focus-visible { outline-color: var(--accent-focus); }
+.generate-actions .wide:disabled { background: #e5eaf3; color: #68768e; border-color: #ccd5e5; box-shadow: none; }
+.workflow-tabs [role=tab] { color: var(--ui-muted); }
+.workflow-tabs [role=tab][aria-selected=true] { color: var(--accent); border-bottom-color: var(--accent); }
+.workflow-tabs [role=tab]:hover { background: var(--accent-soft); }
+.presets button.active, .mandala-presets button.active, .three-modes button.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
+.layer.active { background: var(--accent-soft); border-color: var(--accent-border); }
+.segmented { background: #eceff4; }
+.segmented button.active, #imagePreviewModes button[aria-pressed=true] { color: var(--accent); }
+.bridge-tools button.active { background: var(--accent-soft); }
+.layer-disclosure > summary:focus-visible, .three-mode #viewer3d canvas:focus-visible { outline-color: var(--accent-focus); }
+.dot { background: var(--accent); }
+#toast { background: var(--accent-hover); }
+
+main { background: #f3f4f6; }
+#stage { background-image: radial-gradient(#8e98a633 .8px, transparent .8px); }
+.canvas-toolbar, footer { background: #fafbfc; border-color: var(--ui-border); }
+header, .left, .right, .workflow-tabs, .zoom, dialog { border-color: var(--ui-border); }
+input:not([type=checkbox],[type=range],[type=color]), select {
+  color: var(--ui-text);
+  background: #fafbfc;
+  border-color: var(--ui-border);
+}
+label, .section-title, .note, section .note, .layer small, .layer-foot,
+.art-label, .canvas-bottom, footer, .plan-row, dialog p,
+.import-panel summary, .conversion-status:not(.warn), .source-badge,
+.layer-disclosure > summary, #tonePreview figcaption, #photoStatus,
+.photo-canvases figcaption, #bridgeEditStatus, .three-mode #threeNotice,
+#exportSummary, #imageBoardSettings > summary, #advancedImageControls > summary,
+body.image-workspace #automaticImageStatus, body.image-workspace .source-preview > span {
+  color: var(--ui-muted);
+}
+#artboardSection .section-title, #imageLayerCount, .decoration-toggles label, #imagePromptDialog { color: var(--ui-text); }
+dialog::backdrop, #imageCropDialog::backdrop, #bridgeEditor::backdrop, #imagePromptDialog::backdrop { background: #15264266; }
+.upload-target { color: var(--accent); background: #f5f7fc; border-color: var(--accent-border); }
+.upload-target.dragging { background: #dce7fa; border-color: var(--accent); }
+#imageSourceActions #uploadImage { border-color: var(--accent-border); }
+.upload-target small, .empty-canvas p { color: var(--ui-muted); }
+.source-preview img, .crop-surface, .photo-canvases canvas { background: #edf0f5; }
+.source-preview > span { background: #183e85e6; }
+body.image-workspace .source-preview > span { background: none; }
+#toneHistogram, #bridgeCanvas { background: #f2f5fa; border-color: var(--ui-border); }
+#cutReview:not(.warn), .material-note { background: #f3f5f9; color: var(--ui-muted); }
+#openImagePrompt { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-border); }
+#openImagePrompt:hover { background: #dfe8fa; }
+#openImagePrompt small { color: #49618a; }
+#aiImport summary { color: var(--accent); }
+#aiImport .ai-prompt-badge { background: var(--accent-soft); color: var(--accent); }
+#imagePromptDialog #aiImport textarea { background: #f7f9fc; border-color: var(--ui-border); }
